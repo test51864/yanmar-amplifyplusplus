@@ -1,0 +1,44 @@
+YANMAR AMPLIFY++ — MEGA UPGRADE CHANGELOG
+
+BRAND / DESIGN
+- Replaced generic icon-led identity with visible YANMAR horizontal logo + Flying Y.
+- Added exact Flying Y remote favicon with version cache-busting and local fallback.
+- Added Brand Centre with identity, Yanmar Red, voice and pre-publish guardrails.
+- Rebuilt login as a product-led Yanmar experience using YDG imagery.
+- Rebuilt sidebar to a cleaner white/graphite/red brand system.
+- Added real SVG line navigation icons.
+- Added collapsible sticky desktop sidebar.
+- Reworked top bar, search, cards, metrics, tables and form controls.
+- Reworked Command Centre hero with YDG product imagery and quieter visual hierarchy.
+- Reworked Product Hub to be product-first instead of abstract mock machinery.
+- Added responsive and dark-mode refinements.
+
+FUNCTIONAL UPGRADES
+- Distributor network pulse added to Command Centre.
+- Local network activity feed added.
+- Admin workspace backup/restore/reset added.
+- Governance settings persist locally.
+- Campaign activation plans can be submitted to HQ approval queue.
+- Report Results supports evidence-file selection/file-name capture.
+- Asset favorites added.
+- Admin-added asset metadata now persists in the browser through Mega layer.
+- New UTM Builder added to SEO & SEA Lab.
+- Official Yanmar product-source shortcuts added to Product Hub.
+- Search/SEA source shortcuts added to Google documentation.
+- Updated service-worker cache so GitHub Pages does not remain stuck on the old build.
+
+UNCHANGED CORE
+- Login: Yanmar / Almere
+- Distributor/Admin views
+- Content Studio
+- Calendar
+- Comparison Builder
+- TCO Calculator
+- Localization
+- Market Playbooks
+- Event Kit
+- Co-Marketing
+- Academy
+- Results reporting
+- Support requests
+- Impact / Approval / Users / Admin

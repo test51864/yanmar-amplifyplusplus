@@ -1,0 +1,18 @@
+{
+  "name": "YANMAR Amplify++",
+  "short_name": "Amplify++",
+  "description": "YANMAR distributor activation operating system prototype.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#E60012",
+  "icons": [
+    {
+      "src": "assets/brand/flying-y.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

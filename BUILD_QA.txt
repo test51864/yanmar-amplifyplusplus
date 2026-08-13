@@ -1,0 +1,56 @@
+YANMAR AMPLIFY++ — MEGA UPGRADE QA
+
+Build type: Static GitHub Pages prototype
+Repository target: test51864/yanmar-amplifyplusplus
+
+STATIC VALIDATION
+PASS — app.js JavaScript syntax
+PASS — mega.js JavaScript syntax
+PASS — 21 navigation items map to 21 application views
+PASS — no duplicate HTML IDs
+PASS — all local HTML CSS/JS/image references resolve
+PASS — all explicitly-ID'd buttons are referenced by application JavaScript
+PASS — web manifest parses and points to the new brand fallback icon
+PASS — service-worker cache bumped to ymar-amplify-plus-plus-mega-v3
+PASS — index.html remains at repository root
+PASS — new mega.css is loaded after the base stylesheet
+PASS — new mega.js is loaded after the base application script
+
+MAJOR FUNCTIONAL AREAS PRESENT
+- Browser login/session
+- Distributor/Admin role switch
+- Global search
+- Sticky/collapsible navigation
+- Brand Centre
+- Product Hub
+- Campaign Builder + local draft + HQ approval submission
+- AI content draft studio
+- SEO Readiness analysis
+- SEA asset generator
+- Metadata generator
+- UTM Builder
+- Asset Library + favorites + admin-added local asset metadata
+- Content Calendar
+- Comparison Builder
+- TCO Calculator
+- Localization workflow
+- Market Playbooks
+- Event Kit Builder
+- Co-Marketing requests
+- Distributor Academy progress
+- Report Results + evidence file selector
+- Support workflow
+- Impact Dashboard
+- Approval Centre
+- User Access
+- Admin governance controls
+- Workspace JSON backup / restore / reset
+- Light/dark mode
+- LocalStorage persistence
+- Service-worker cache refresh
+
+BROWSER AUTOMATION NOTE
+A full headless Chromium click-through could not be completed in the execution runtime because local/file navigation is blocked by the environment and direct Chromium startup hangs on unavailable system DBus services. Static DOM, path and JavaScript checks passed. After GitHub Pages deployment, perform one manual browser smoke test of login, role switching, key forms, exports and mobile layout.
+
+PRODUCTION BOUNDARY
+This remains a browser-side proof of concept. Secure authentication, shared databases, live enterprise analytics, private file storage and real generative AI require a backend/API architecture and security review.

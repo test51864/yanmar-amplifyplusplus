@@ -1,0 +1,87 @@
+YANMAR AMPLIFY++ — MEGA UPGRADE
+EXISTING REPOSITORY: test51864/yanmar-amplifyplusplus
+
+DOWNLOAD
+Use the Yanmar-Amplify-Plus-Plus-Mega.zip package.
+Unzip it on your Mac first. Do NOT upload the ZIP itself to the repository.
+
+REPLACE THE CURRENT GITHUB VERSION
+1. Open your existing repository:
+   test51864 / yanmar-amplifyplusplus
+
+2. Stay on the main branch.
+
+3. Click:
+   Add file > Upload files
+
+4. Open the extracted Yanmar-Amplify-Plus-Plus-Mega folder in Finder.
+
+5. Select EVERYTHING INSIDE that folder (Cmd+A), including:
+   - assets/
+   - index.html
+   - styles.css
+   - mega.css
+   - app.js
+   - mega.js
+   - manifest.webmanifest
+   - sw.js
+   - 404.html
+   - README.md
+   - SECURITY.md
+   - BUILD_QA.txt
+   - other .txt documentation
+
+6. Drag the selected CONTENTS into GitHub's upload area.
+   IMPORTANT: index.html must be directly in the repository root.
+   Do not create an extra nested Yanmar-Amplify-Plus-Plus-Mega folder in GitHub.
+
+7. GitHub will recognize same-named files as updates and mega.css / mega.js as new files.
+
+8. Commit message:
+   YANMAR Amplify++ mega upgrade
+
+9. Choose:
+   Commit directly to the main branch
+
+10. Click Commit changes.
+
+GITHUB PAGES
+Your existing Pages setting can stay:
+- Source: Deploy from a branch
+- Branch: main
+- Folder: / (root)
+
+After the commit, GitHub Pages should deploy the updated main branch automatically.
+
+IMPORTANT AFTER DEPLOYMENT
+The previous version used a service worker and browsers also cache favicons strongly.
+The Mega build has a new cache name, but after GitHub reports that Pages is deployed:
+
+1. Open the live site.
+2. Press Cmd + Shift + R once for a hard refresh.
+3. If the old favicon is still visible, close the tab and reopen the live site.
+4. If an old build somehow remains, clear site data for the GitHub Pages URL once and reload.
+
+LOGIN
+Username: Yanmar
+Password: Almere
+
+WHAT TO CHECK AFTER UPLOAD
+- Official YANMAR wordmark appears on login and in the app navigation.
+- Flying Y favicon/brand mark appears correctly.
+- Login works.
+- Distributor/Admin role switch works.
+- Sidebar remains sticky and can collapse on desktop.
+- Brand Centre opens.
+- Product Hub tabs work.
+- Campaign Builder creates a plan and can submit it for HQ approval.
+- Content Studio generates copy.
+- SEO score recalculates.
+- SEA assets generate with character counters.
+- Calendar, TCO and Comparison tools work.
+- Report Results accepts/saves result data.
+- Admin approval and user tools work.
+- Dark mode works.
+
+STATIC PROTOTYPE LIMIT
+Secure authentication, a shared database, real external AI and synchronized multi-user data require a backend. Do not use this static build for confidential production data.
