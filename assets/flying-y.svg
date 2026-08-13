@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" role="img" aria-labelledby="title">
+  <title id="title">Yanmar Flying Y</title>
+  <g fill="#E60012">
+    <path d="M7 18c18 1 35 5 51 14 3 2 5 4 6 7-13-3-26-4-39-4-7 0-13-3-18-8V18Z"/>
+    <path d="M121 18c-18 1-35 5-51 14-3 2-5 4-6 7 13-3 26-4 39-4 7 0 13-3 18-8V18Z"/>
+    <path d="M58 37h12l-2 13v30c0 3-2 5-4 7-3-2-4-4-4-7V50l-2-13Z"/>
+  </g>
+</svg>
