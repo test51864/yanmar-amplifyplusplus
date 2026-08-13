@@ -1,0 +1,27 @@
+YANMAR AMPLIFY++ — GITHUB UPLOAD INSTRUCTIONS
+
+NEW REPOSITORY
+1. Create a new public or private GitHub repository:
+   Yanmar-Amplify-Plus-Plus
+2. Do not add a generated README, .gitignore or licence during repository creation.
+3. Extract Yanmar-Amplify-Plus-Plus.zip.
+4. Open the extracted Yanmar-Amplify-Plus-Plus folder.
+5. Upload every file and the assets folder to the ROOT of the new repository.
+6. Confirm that index.html is directly visible in the repository root.
+
+ENABLE GITHUB PAGES
+1. Open the repository on GitHub.
+2. Go to Settings > Pages.
+3. Under Build and deployment, select Deploy from a branch.
+4. Select branch: main.
+5. Select folder: / (root).
+6. Save and wait for the published URL to appear.
+
+LOGIN
+Username: Yanmar
+Password: Almere
+
+IMPORTANT
+This is a front-end prototype. Replace the demonstration login with secure
+server-side authentication before using real company data. Browser data is
+stored locally and is not synchronised between users or devices.

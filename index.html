@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <meta name="description" content="Yanmar Amplify++ distributor activation operating system prototype." />
+  <title>Yanmar Amplify++</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <noscript>This prototype requires JavaScript.</noscript>
+
+  <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+    <div class="login-bg login-bg-a"></div>
+    <div class="login-bg login-bg-b"></div>
+    <div class="login-shell">
+      <div class="login-brand">
+        <div class="brand-mark brand-mark-xl" aria-hidden="true">
+          <img src="assets/flying-y.svg" alt="" />
+        </div>
+        <div>
+          <p class="eyebrow">Distributor activation platform</p>
+          <h1 id="loginTitle">Yanmar Amplify<span>++</span></h1>
+          <p class="login-intro">A calm, intelligent workspace for product knowledge, local marketing activation and measurable distributor growth.</p>
+
+          <div class="pp-login-capabilities" aria-label="Amplify Plus Plus capabilities">
+            <div><b>01</b><span><strong>Create</strong><small>Campaigns and localized content</small></span></div>
+            <div><b>02</b><span><strong>Activate</strong><small>Markets, dealers and events</small></span></div>
+            <div><b>03</b><span><strong>Measure</strong><small>Adoption, leads and feedback</small></span></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="login-card" id="loginForm" autocomplete="off">
+        <div class="login-card-head">
+          <span class="status-dot"></span>
+          <span>Secure workspace access</span>
+        </div>
+        <label>
+          <span>Username</span>
+          <input id="loginUser" name="username" value="Yanmar" autocomplete="username" required />
+        </label>
+        <label>
+          <span>Password</span>
+          <div class="password-row">
+            <input id="loginPassword" name="password" type="password" value="Almere" autocomplete="current-password" required />
+            <button class="icon-button" type="button" id="togglePassword" aria-label="Show password">◉</button>
+          </div>
+        </label>
+        <button class="primary-button login-button" type="submit">
+          <span>Connect to Amplify++</span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="form-message" id="loginMessage" role="alert"></p>
+        <div class="login-meta">
+          <span>Prototype environment</span>
+          <span>++ Next-generation prototype</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="connection-overlay" id="connectionOverlay" aria-live="polite" aria-hidden="true">
+    <div class="connection-card">
+      <div class="brand-mark brand-mark-connect">
+        <img src="assets/flying-y.svg" alt="Yanmar Flying Y connecting" />
+      </div>
+      <h2>Connecting to Amplify++</h2>
+      <p id="connectionText">Authenticating workspace…</p>
+      <div class="connection-track"><span></span></div>
+    </div>
+  </div>
+
+  <div class="app-shell" id="appShell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark"><img src="assets/flying-y.svg" alt="" /></div>
+        <div>
+          <strong>YANMAR</strong>
+          <span>AMPLIFY++</span>
+        </div>
+      </div>
+
+      <div class="workspace-switch" role="group" aria-label="Workspace role">
+        <button class="role-button is-active" data-role="distributor">Distributor</button>
+        <button class="role-button" data-role="admin">Admin</button>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <p class="nav-label">Command</p>
+        <button class="nav-item is-active" data-view="dashboard" data-i18n="dashboard">
+          <span class="nav-icon">⌂</span><span>Command Centre</span>
+        </button>
+        <button class="nav-item" data-view="impact-dashboard">
+          <span class="nav-icon">↗</span><span>Impact Dashboard</span><span class="beta-pill">LIVE</span>
+        </button>
+
+        <p class="nav-label">Create & activate</p>
+        <button class="nav-item" data-view="product-hub">
+          <span class="nav-icon">P</span><span>Product Hub</span>
+        </button>
+        <button class="nav-item" data-view="campaign-studio" data-i18n="campaignStudio">
+          <span class="nav-icon">✦</span><span>Campaign Builder</span>
+        </button>
+        <button class="nav-item" data-view="amplify-ai" data-i18n="amplifyAi">
+          <span class="nav-icon">AI</span><span>Content Studio AI</span><span class="beta-pill">AI</span>
+        </button>
+        <button class="nav-item" data-view="seo-sea-lab">
+          <span class="nav-icon">S</span><span>SEO & SEA Lab</span>
+        </button>
+        <button class="nav-item" data-view="content-library" data-i18n="contentLibrary">
+          <span class="nav-icon">▦</span><span>Asset Library</span><span class="nav-count">28</span>
+        </button>
+        <button class="nav-item" data-view="calendar" data-i18n="calendar">
+          <span class="nav-icon">□</span><span>Content Calendar</span>
+        </button>
+
+        <p class="nav-label">Sell & localize</p>
+        <button class="nav-item" data-view="comparison" data-i18n="comparison">
+          <span class="nav-icon">⇄</span><span>Comparison Builder</span>
+        </button>
+        <button class="nav-item" data-view="tco" data-i18n="tco">
+          <span class="nav-icon">€</span><span>TCO Calculator</span>
+        </button>
+        <button class="nav-item" data-view="localization" data-i18n="localization">
+          <span class="nav-icon">文</span><span>Localization Hub</span>
+        </button>
+        <button class="nav-item" data-view="market-playbooks">
+          <span class="nav-icon">◎</span><span>Market Playbooks</span>
+        </button>
+        <button class="nav-item" data-view="event-kit">
+          <span class="nav-icon">E</span><span>Event Kit Builder</span>
+        </button>
+        <button class="nav-item" data-view="co-marketing">
+          <span class="nav-icon">M</span><span>Co-Marketing Hub</span>
+        </button>
+
+        <p class="nav-label">Learn & support</p>
+        <button class="nav-item" data-view="academy">
+          <span class="nav-icon">A</span><span>Distributor Academy</span><span class="nav-count">5</span>
+        </button>
+        <button class="nav-item" data-view="report-results" data-i18n="reportResults">
+          <span class="nav-icon">R</span><span>Report Results</span><span class="notification-dot"></span>
+        </button>
+        <button class="nav-item" data-view="support" data-i18n="support">
+          <span class="nav-icon">?</span><span>Support Centre</span>
+        </button>
+
+        <p class="nav-label admin-only">Administration</p>
+        <button class="nav-item admin-only" data-view="approval-center">
+          <span class="nav-icon">✓</span><span>Approval Centre</span><span class="nav-count" id="ppApprovalCount">4</span>
+        </button>
+        <button class="nav-item admin-only" data-view="user-access">
+          <span class="nav-icon">U</span><span>User Access</span>
+        </button>
+        <button class="nav-item admin-only" data-view="admin-console" data-i18n="adminConsole">
+          <span class="nav-icon">⚙</span><span>Admin Console</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="server-state"><span class="status-dot"></span><div><strong>Server connected</strong><small>EU workspace · Live demo</small></div></div>
+        <button class="ghost-button full-width" id="logoutButton">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="mobileMenuButton" aria-label="Open navigation">☰</button>
+        <div class="global-search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input id="globalSearch" placeholder="Search tools, content and actions…" aria-label="Search portal" />
+          <kbd>⌘ K</kbd>
+          <div class="search-results" id="searchResults" hidden></div>
+        </div>
+        <div class="topbar-actions">
+          <select id="languageSelect" class="compact-select" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="nl">NL</option>
+            <option value="ar">AR</option>
+          </select>
+          <button class="icon-button" id="themeButton" aria-label="Toggle dark mode">◐</button>
+          <button class="icon-button notification-button" id="notificationButton" aria-label="Notifications">●<span>3</span></button>
+          <button class="profile-button" id="profileButton">
+            <span class="avatar">YD</span>
+            <span><strong id="profileRole">Distributor</strong><small>Yanmar network</small></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <section class="view is-active" id="view-dashboard" data-view-name="dashboard">
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <div class="pp-hero-kicker"><span class="status-dot"></span> AMPLIFY CLOUD CONNECTED</div>
+              <p class="eyebrow">Yanmar Amplify++</p>
+              <h2>Build momentum.<br><span>Market by market.</span></h2>
+              <p>Turn Yanmar product knowledge into campaigns, local activation, distributor capability and measurable market action.</p>
+              <div class="button-row">
+                <button class="primary-button" data-open-view="campaign-studio">Create a campaign</button>
+                <button class="secondary-button" data-open-view="impact-dashboard">View market impact</button>
+              </div>
+            </div>
+            <div class="hero-visual" aria-label="Activation score">
+              <div class="pulse-ring pulse-ring-a"></div>
+              <div class="pulse-ring pulse-ring-b"></div>
+              <div class="score-orbit">
+                <div class="brand-mark brand-mark-hero"><img src="assets/flying-y.svg" alt="" /></div>
+                <strong id="activationScore">76</strong>
+                <span>Activation score</span>
+              </div>
+              <div class="orbit-tag orbit-tag-a">Content</div>
+              <div class="orbit-tag orbit-tag-b">Localize</div>
+              <div class="orbit-tag orbit-tag-c">Measure</div>
+            </div>
+          </div>
+
+          <div class="pp-command-strip">
+            <div><small>Workspace pulse</small><strong>8 active markets</strong></div>
+            <div><small>Next deadline</small><strong>Report July results · 4 days</strong></div>
+            <div><small>Latest update</small><strong>New YDP flood-response pack</strong></div>
+            <button data-open-view="product-hub">Open Product Hub →</button>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card"><span class="metric-label">Campaigns launched</span><strong id="metricCampaigns">8</strong><small class="positive">↑ 2 this month</small></article>
+            <article class="metric-card"><span class="metric-label">Assets downloaded</span><strong id="metricDownloads">34</strong><small>Across YDG, YDP and L-Series</small></article>
+            <article class="metric-card"><span class="metric-label">Results reported</span><strong id="metricReports">3</strong><small class="positive">100% complete</small></article>
+            <article class="metric-card"><span class="metric-label">Open support requests</span><strong id="metricRequests">1</strong><small>Average response: 1.4 days</small></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel span-7">
+              <div class="panel-head"><div><p class="eyebrow">Recommended next actions</p><h3>Keep your activation moving</h3></div><button class="text-button" data-open-view="calendar">View calendar →</button></div>
+              <div class="action-list">
+                <button class="action-card" data-open-view="amplify-ai"><span class="action-index">01</span><div><strong>Create localized YDG copy</strong><small>Generate a social caption and landing-page metadata for your market.</small></div><span>→</span></button>
+                <button class="action-card" data-open-view="report-results"><span class="action-index">02</span><div><strong>Report June campaign results</strong><small>Add reach, clicks, leads and commercial feedback.</small></div><span>→</span></button>
+                <button class="action-card" data-open-view="comparison"><span class="action-index">03</span><div><strong>Prepare a competitor sheet</strong><small>Compare YDG with a local market alternative.</small></div><span>→</span></button>
+              </div>
+            </article>
+            <article class="panel span-5">
+              <div class="panel-head"><div><p class="eyebrow">Upcoming</p><h3>Activation calendar</h3></div><span class="date-chip">JUL 2026</span></div>
+              <div class="mini-timeline">
+                <div><time>29 JUL</time><span></span><p><strong>Construction reliability post</strong><small>YDG · Social media</small></p></div>
+                <div><time>04 AUG</time><span></span><p><strong>Flood response use case</strong><small>YDP · Website + LinkedIn</small></p></div>
+                <div><time>12 AUG</time><span></span><p><strong>Rental fleet comparison</strong><small>YDG · Sales enablement</small></p></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="pp-launch-grid">
+            <button data-open-view="product-hub"><span class="pp-launch-icon red">P</span><div><small>PRODUCT INTELLIGENCE</small><strong>Product Hub</strong><p>Value stories, use cases and approved product arguments.</p></div><b>→</b></button>
+            <button data-open-view="seo-sea-lab"><span class="pp-launch-icon blue">S</span><div><small>SEARCH VISIBILITY</small><strong>SEO & SEA Lab</strong><p>Score page copy and generate search advertising assets.</p></div><b>→</b></button>
+            <button data-open-view="market-playbooks"><span class="pp-launch-icon green">◎</span><div><small>LOCAL ACTIVATION</small><strong>Market Playbooks</strong><p>Country-specific priorities, support needs and actions.</p></div><b>→</b></button>
+            <button data-open-view="academy"><span class="pp-launch-icon orange">A</span><div><small>DISTRIBUTOR CAPABILITY</small><strong>Amplify Academy</strong><p>Short learning paths for product and value selling.</p></div><b>→</b></button>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel span-8">
+              <div class="panel-head"><div><p class="eyebrow">Performance pulse</p><h3>Reported activation by month</h3></div><select class="compact-select"><option>Last 6 months</option></select></div>
+              <div class="bar-chart" aria-label="Activation performance chart">
+                <div style="--h:37%"><span>FEB</span></div><div style="--h:52%"><span>MAR</span></div><div style="--h:45%"><span>APR</span></div><div style="--h:68%"><span>MAY</span></div><div style="--h:74%"><span>JUN</span></div><div style="--h:86%"><span>JUL</span></div>
+              </div>
+            </article>
+            <article class="panel span-4">
+              <div class="panel-head"><div><p class="eyebrow">Fast access</p><h3>Most used tools</h3></div></div>
+              <div class="quick-tools">
+                <button data-open-view="tco"><span>€</span><div><strong>TCO Calculator</strong><small>12 uses</small></div></button>
+                <button data-open-view="amplify-ai"><span>AI</span><div><strong>Amplify AI</strong><small>9 generations</small></div></button>
+                <button data-open-view="content-library"><span>▦</span><div><strong>Content Library</strong><small>34 downloads</small></div></button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-content-library" data-view-name="content-library">
+          <div class="page-head"><div><p class="eyebrow">Ready-to-use resources</p><h2>Asset Library</h2><p>Find approved product content, campaign assets and localizable templates.</p></div><button class="primary-button admin-only" id="openUploadAsset">Upload asset</button></div>
+          <div class="filter-bar">
+            <input id="assetSearch" placeholder="Search assets…" />
+            <select id="assetProduct"><option value="all">All product lines</option><option>YDG</option><option>YDP</option><option>L-Series</option></select>
+            <select id="assetType"><option value="all">All formats</option><option>Social</option><option>Website</option><option>Sales</option><option>Technical</option></select>
+            <select><option>Newest first</option><option>Most downloaded</option></select>
+          </div>
+          <div class="asset-grid" id="assetGrid"></div>
+        </section>
+
+        <section class="view" id="view-campaign-studio" data-view-name="campaign-studio">
+          <div class="page-head"><div><p class="eyebrow">Guided activation workflow</p><h2>Campaign Builder</h2><p>Build a practical campaign from objective to local execution.</p></div><span class="progress-pill">Draft saved locally</span></div>
+          <div class="studio-layout">
+            <form class="panel form-panel" id="campaignForm">
+              <div class="step-title"><span>01</span><div><h3>Campaign foundation</h3><p>Define the market, audience and activation goal.</p></div></div>
+              <div class="form-grid two-col">
+                <label><span>Campaign name</span><input id="campaignName" value="YDG Reliable Power Campaign" required /></label>
+                <label><span>Product line</span><select id="campaignProduct"><option>YDG</option><option>YDP</option><option>L-Series</option></select></label>
+                <label><span>Market</span><input id="campaignMarket" value="Netherlands" /></label>
+                <label><span>Primary audience</span><select id="campaignAudience"><option>Construction companies</option><option>Rental companies</option><option>Agricultural businesses</option><option>Dealers</option><option>Industrial OEM customers</option></select></label>
+                <label><span>Objective</span><select id="campaignObjective"><option>Generate qualified leads</option><option>Increase product awareness</option><option>Support dealer sales</option><option>Drive website traffic</option><option>Promote event participation</option></select></label>
+                <label><span>Primary channel</span><select id="campaignChannel"><option>LinkedIn</option><option>Website</option><option>Email</option><option>Dealer event</option><option>Google Search</option></select></label>
+              </div>
+              <div class="step-title"><span>02</span><div><h3>Message & proof</h3><p>Select the value story that should lead the campaign.</p></div></div>
+              <div class="choice-grid" id="messageChoices">
+                <button type="button" class="choice-card is-selected" data-message="Reliable professional power"><strong>Reliability</strong><small>Professional power when uptime matters.</small></button>
+                <button type="button" class="choice-card" data-message="Lower total cost of ownership"><strong>Lifecycle value</strong><small>Fuel efficiency, durability and service support.</small></button>
+                <button type="button" class="choice-card" data-message="Stage V compliant performance"><strong>Compliance</strong><small>European-ready professional equipment.</small></button>
+                <button type="button" class="choice-card" data-message="Built for local applications"><strong>Application fit</strong><small>Show the product in a relevant use case.</small></button>
+              </div>
+              <label><span>Local context or offer</span><textarea id="campaignContext" rows="4" placeholder="Example: focus on rental fleets and continuous operation on construction sites."></textarea></label>
+              <div class="button-row end"><button type="button" class="secondary-button" id="saveCampaign">Save draft</button><button type="submit" class="primary-button">Create activation plan</button></div>
+            </form>
+            <aside class="panel preview-panel">
+              <p class="eyebrow">Live campaign preview</p>
+              <div class="campaign-preview-card">
+                <span class="product-badge" id="previewProduct">YDG</span>
+                <h3 id="previewCampaignName">YDG Reliable Power Campaign</h3>
+                <p id="previewMessage">Reliable professional power for construction companies in the Netherlands.</p>
+                <div class="preview-proof"><span>✓</span><p><strong>Recommended proof point</strong><small id="previewProof">Long runtime, robust diesel performance and Yanmar service support.</small></p></div>
+                <div class="preview-channel"><small>Primary activation</small><strong id="previewChannel">LinkedIn · Lead generation</strong></div>
+              </div>
+              <div class="readiness-list">
+                <div><span>Audience fit</span><strong>Strong</strong></div><div><span>Message clarity</span><strong>Strong</strong></div><div><span>Local relevance</span><strong id="localRelevance">Improve</strong></div><div><span>Measurement setup</span><strong>Ready</strong></div>
+              </div>
+            </aside>
+          </div>
+          <article class="panel" id="activationPlanPanel" hidden>
+            <div class="panel-head"><div><p class="eyebrow">Generated plan</p><h3>Your activation blueprint</h3></div><div class="button-row"><button class="secondary-button" id="downloadCampaignPlan">Download brief</button><button class="primary-button" data-open-view="amplify-ai">Create campaign copy</button></div></div>
+            <div class="blueprint-grid" id="activationPlan"></div>
+          </article>
+        </section>
+
+        <section class="view" id="view-amplify-ai" data-view-name="amplify-ai">
+          <div class="page-head"><div><p class="eyebrow">AI-assisted communication workspace</p><h2>Content Studio AI</h2><p>Generate, improve and validate localized product communication.</p></div><div class="source-chip">Guided by official search and ad best practices</div></div>
+          <div class="ai-mode-tabs" role="tablist">
+            <button class="ai-tab is-active" data-ai-mode="generate">Content Generator</button>
+            <button class="ai-tab" data-ai-mode="seo">SEO Readiness</button>
+            <button class="ai-tab" data-ai-mode="sea">SEA Ad Builder</button>
+            <button class="ai-tab" data-ai-mode="compliance">Claim & Compliance Check</button>
+          </div>
+
+          <div class="ai-workspace ai-mode is-active" id="ai-generate">
+            <form class="panel ai-input-panel" id="aiGeneratorForm">
+              <div class="panel-head"><div><p class="eyebrow">Brief the assistant</p><h3>Create localized copy</h3></div><span class="beta-pill">PROTOTYPE AI</span></div>
+              <div class="form-grid two-col">
+                <label><span>Content type</span><select id="aiContentType"><option>Social caption</option><option>Website introduction</option><option>Product email</option><option>Meta title and description</option><option>Dealer sales message</option></select></label>
+                <label><span>Product</span><select id="aiProduct"><option>YDG Portable Diesel Generator</option><option>YDP Portable Diesel Pump</option><option>L-Series Industrial Engine</option></select></label>
+                <label><span>Market</span><input id="aiMarket" value="Netherlands" /></label>
+                <label><span>Language</span><select id="aiLanguage"><option>English</option><option>Dutch</option><option>German</option><option>French</option><option>Spanish</option><option>Polish</option><option>Arabic</option></select></label>
+                <label><span>Audience</span><select id="aiAudience"><option>Construction companies</option><option>Rental companies</option><option>Agricultural businesses</option><option>Industrial buyers</option><option>Dealers</option></select></label>
+                <label><span>Tone</span><select id="aiTone"><option>Professional and practical</option><option>Technical and authoritative</option><option>Concise and commercial</option><option>Helpful and educational</option></select></label>
+              </div>
+              <label><span>Primary message or keyword</span><input id="aiKeyword" value="reliable diesel generator" /></label>
+              <label><span>Local context</span><textarea id="aiContext" rows="4" placeholder="Add local application, offer, event or customer need."></textarea></label>
+              <div class="button-row end"><button type="button" class="secondary-button" id="clearAiBrief">Clear</button><button type="submit" class="primary-button">Generate content ✦</button></div>
+            </form>
+            <article class="panel ai-output-panel">
+              <div class="panel-head"><div><p class="eyebrow">Generated draft</p><h3>Review before publishing</h3></div><div class="button-row"><button class="icon-button" id="copyAiOutput" title="Copy">⧉</button><button class="icon-button" id="downloadAiOutput" title="Download">↓</button></div></div>
+              <div class="ai-output-empty" id="aiOutputEmpty"><div class="brand-mark brand-mark-muted"><img src="assets/flying-y.svg" alt="" /></div><h4>Your draft appears here</h4><p>Complete the brief and generate an editable first version.</p></div>
+              <div id="aiOutputWrap" hidden>
+                <textarea id="aiOutput" class="output-editor" rows="16"></textarea>
+                <div class="output-meta"><span id="outputWordCount">0 words</span><span>Human review required</span><span>Claims must be verified</span></div>
+                <button class="secondary-button full-width" id="sendToSeo">Analyze SEO readiness</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="ai-workspace ai-mode" id="ai-seo">
+            <form class="panel ai-input-panel" id="seoForm">
+              <div class="panel-head"><div><p class="eyebrow">Search visibility check</p><h3>Amplify SEO Readiness Score</h3></div><span class="method-pill">0–100</span></div>
+              <p class="info-callout">This is a transparent content-readiness check, not a Google ranking prediction. Rankings depend on many signals outside the text itself.</p>
+              <label><span>Focus keyword</span><input id="seoKeyword" value="diesel generator for construction" /></label>
+              <label><span>Page title</span><input id="seoTitle" value="Reliable Diesel Generator for Construction | Yanmar YDG" /></label>
+              <label><span>Meta description</span><textarea id="seoMeta" rows="3">Discover Yanmar YDG portable diesel generators for reliable professional power, long runtime and demanding construction applications.</textarea><small><span id="metaLength">0</span>/160 characters</small></label>
+              <label><span>Page copy</span><textarea id="seoCopy" rows="12">Reliable power matters when construction work cannot stop. The Yanmar YDG portable diesel generator combines robust professional performance with efficient operation and practical portability. It is designed for demanding users who need dependable power on site. Contact your local Yanmar distributor to discuss the right configuration for your application.</textarea></label>
+              <div class="form-grid two-col"><label><span>Page URL</span><input id="seoUrl" value="/ydg-diesel-generator-construction" /></label><label><span>Market</span><input id="seoMarket" value="Netherlands" /></label></div>
+              <button type="submit" class="primary-button full-width">Analyze content</button>
+            </form>
+            <article class="panel seo-results-panel">
+              <div class="score-summary">
+                <div class="score-ring" id="seoScoreRing"><strong id="seoScore">—</strong><span>readiness</span></div>
+                <div><p class="eyebrow">Current evaluation</p><h3 id="seoScoreLabel">Run an analysis</h3><p id="seoScoreText">You will receive a weighted score and concrete improvements.</p></div>
+              </div>
+              <div class="serp-preview">
+                <span>Search preview</span>
+                <h4 id="serpTitle">Reliable Diesel Generator for Construction | Yanmar YDG</h4>
+                <small id="serpUrl">yanmar-distributor.example/ydg-diesel-generator-construction</small>
+                <p id="serpDescription">Discover Yanmar YDG portable diesel generators for reliable professional power, long runtime and demanding construction applications.</p>
+              </div>
+              <div class="check-list" id="seoChecks"><div class="empty-list">Run the analyzer to see prioritized checks.</div></div>
+              <details class="methodology-details"><summary>How this score works</summary><p>The score checks practical on-page factors such as clear titles, useful descriptions, keyword relevance, readable structure, local context and calls to action. It deliberately does not claim to predict search rankings.</p></details>
+            </article>
+          </div>
+
+          <div class="ai-workspace ai-mode" id="ai-sea">
+            <form class="panel ai-input-panel" id="seaForm">
+              <div class="panel-head"><div><p class="eyebrow">Responsive search ads</p><h3>SEA Ad Builder</h3></div><span class="method-pill">Google Ads format</span></div>
+              <div class="form-grid two-col">
+                <label><span>Product</span><select id="seaProduct"><option>YDG portable diesel generator</option><option>YDP portable diesel pump</option><option>L-Series industrial engine</option></select></label>
+                <label><span>Market</span><input id="seaMarket" value="Netherlands" /></label>
+                <label><span>Primary keyword</span><input id="seaKeyword" value="portable diesel generator" /></label>
+                <label><span>Audience</span><input id="seaAudience" value="construction and rental companies" /></label>
+              </div>
+              <label><span>Value proposition</span><textarea id="seaValue" rows="4">Reliable professional diesel power, efficient operation and Yanmar service support.</textarea></label>
+              <label><span>Final URL</span><input id="seaUrl" value="https://www.yanmar.com/eu/industrial/" /></label>
+              <button class="primary-button full-width" type="submit">Build responsive search ad</button>
+            </form>
+            <article class="panel sea-output-panel">
+              <div class="panel-head"><div><p class="eyebrow">Generated assets</p><h3>Headlines & descriptions</h3></div><span id="adStrength" class="strength-pill">Not generated</span></div>
+              <div id="seaEmpty" class="empty-list">Generate 10 headlines and 4 descriptions with character validation.</div>
+              <div id="seaResults" hidden>
+                <h4>Headlines <small>Maximum 30 characters</small></h4><div class="ad-asset-list" id="headlineList"></div>
+                <h4>Descriptions <small>Maximum 90 characters</small></h4><div class="ad-asset-list" id="descriptionList"></div>
+                <div class="button-row end"><button class="secondary-button" id="copySeaAssets">Copy assets</button><button class="primary-button" id="downloadSeaAssets">Download CSV</button></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="ai-workspace ai-mode" id="ai-compliance">
+            <form class="panel ai-input-panel" id="complianceForm">
+              <div class="panel-head"><div><p class="eyebrow">Publish responsibly</p><h3>Claim & Compliance Check</h3></div><span class="method-pill">Risk flags</span></div>
+              <label><span>Draft content</span><textarea id="complianceCopy" rows="16">The Yanmar YDG is the best generator on the market and guarantees the lowest fuel costs. It delivers unmatched reliability for every application.</textarea></label>
+              <div class="form-grid two-col"><label><span>Market</span><input id="complianceMarket" value="European Union" /></label><label><span>Content type</span><select id="complianceType"><option>Website copy</option><option>Social post</option><option>Sales sheet</option><option>Advertisement</option></select></label></div>
+              <button class="primary-button full-width" type="submit">Check draft</button>
+            </form>
+            <article class="panel compliance-output">
+              <div class="panel-head"><div><p class="eyebrow">Review report</p><h3 id="complianceStatus">No content checked</h3></div><span class="risk-pill" id="riskPill">—</span></div>
+              <div class="check-list" id="complianceChecks"><div class="empty-list">Potentially absolute, comparative or unsupported claims will be flagged here.</div></div>
+              <p class="info-callout">This prototype supports editorial review. It is not legal advice and cannot verify technical claims against official specifications.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-calendar" data-view-name="calendar">
+          <div class="page-head"><div><p class="eyebrow">Plan consistent activation</p><h2>Content Calendar</h2><p>Schedule, assign and track market communication.</p></div><button class="primary-button" id="addCalendarItem">Add activity</button></div>
+          <div class="calendar-toolbar panel"><div class="button-row"><button class="icon-button" id="prevMonth">←</button><button class="icon-button" id="nextMonth">→</button><h3 id="calendarTitle">July 2026</h3></div><div class="legend"><span><i class="legend-dot planned"></i>Planned</span><span><i class="legend-dot progress"></i>In progress</span><span><i class="legend-dot approval"></i>Approval</span><span><i class="legend-dot published"></i>Published</span></div></div>
+          <div class="calendar-grid panel" id="calendarGrid"></div>
+        </section>
+
+        <section class="view" id="view-comparison" data-view-name="comparison">
+          <div class="page-head"><div><p class="eyebrow">Buyer enablement tool</p><h2>Comparison Builder</h2><p>Create a transparent product comparison for sales conversations.</p></div><div class="button-row"><button class="secondary-button" id="printComparison">Print / PDF</button><button class="primary-button" id="downloadComparison">Download CSV</button></div></div>
+          <article class="panel comparison-config">
+            <div class="form-grid three-col"><label><span>Yanmar model</span><select id="yanmarModel"><option>YDG5500</option><option>YDG3700</option><option>YDP40STN</option></select></label><label><span>Market</span><input id="comparisonMarket" value="Netherlands" /></label><label><span>Application</span><select id="comparisonApplication"><option>Construction site</option><option>Rental fleet</option><option>Agriculture</option><option>Emergency response</option></select></label></div>
+          </article>
+          <article class="panel comparison-table-wrap" id="comparisonPrintArea">
+            <div class="comparison-header"><div><p class="eyebrow">Comparison sheet</p><h3 id="comparisonTitle">YDG5500 market comparison</h3></div><div class="brand-lockup"><img src="assets/flying-y.svg" alt="" /><strong>YANMAR</strong></div></div>
+            <div class="comparison-table-scroll"><table class="comparison-table"><thead><tr><th>Criteria</th><th class="yanmar-column">Yanmar <span id="tableYanmarModel">YDG5500</span></th><th><input class="table-input competitor-name" value="Competitor A" /></th><th><input class="table-input competitor-name" value="Competitor B" /></th></tr></thead><tbody id="comparisonBody"></tbody></table></div>
+            <div class="comparison-note"><strong>Buyer guidance</strong><textarea id="comparisonNote">Use verified manufacturer specifications and explain differences in the context of the customer application. Avoid unsupported superiority claims.</textarea></div>
+          </article>
+        </section>
+
+        <section class="view" id="view-tco" data-view-name="tco">
+          <div class="page-head"><div><p class="eyebrow">Value over the full lifecycle</p><h2>Total Cost of Ownership</h2><p>Compare estimated ownership cost beyond the purchase price.</p></div><div class="button-row"><button class="secondary-button" id="printTco">Print / PDF</button><button class="primary-button" id="downloadTco">Download summary</button></div></div>
+          <div class="tco-layout" id="tcoPrintArea">
+            <form class="panel form-panel" id="tcoForm">
+              <div class="panel-head"><div><p class="eyebrow">Calculation assumptions</p><h3>Configure ownership scenario</h3></div></div>
+              <div class="form-grid two-col">
+                <label><span>Ownership period (years)</span><input id="tcoYears" type="number" min="1" max="10" value="5" /></label>
+                <label><span>Operating hours per year</span><input id="tcoHours" type="number" min="1" value="850" /></label>
+              </div>
+              <div class="compare-inputs"><div><h4>Yanmar</h4><label><span>Purchase price (€)</span><input id="tcoYPrice" type="number" value="5200" /></label><label><span>Fuel use (L/hour)</span><input id="tcoYFuel" type="number" step="0.1" value="1.25" /></label><label><span>Annual maintenance (€)</span><input id="tcoYMaintenance" type="number" value="320" /></label><label><span>Residual value (€)</span><input id="tcoYResidual" type="number" value="1600" /></label></div><div><h4>Alternative</h4><label><span>Purchase price (€)</span><input id="tcoCPrice" type="number" value="4200" /></label><label><span>Fuel use (L/hour)</span><input id="tcoCFuel" type="number" step="0.1" value="1.55" /></label><label><span>Annual maintenance (€)</span><input id="tcoCMaintenance" type="number" value="480" /></label><label><span>Residual value (€)</span><input id="tcoCResidual" type="number" value="900" /></label></div></div>
+              <label><span>Fuel price (€ per litre)</span><input id="tcoFuelPrice" type="number" step="0.01" value="1.72" /></label>
+              <button class="primary-button full-width" type="submit">Calculate ownership cost</button>
+            </form>
+            <article class="panel tco-results">
+              <div class="panel-head"><div><p class="eyebrow">Estimated outcome</p><h3><span id="tcoPeriodLabel">5-year</span> ownership comparison</h3></div><span class="method-pill">Editable assumptions</span></div>
+              <div class="tco-total-grid"><div class="tco-total is-primary"><span>Yanmar total cost</span><strong id="tcoYTotal">€—</strong><small id="tcoYHourly">€— per operating hour</small></div><div class="tco-total"><span>Alternative total cost</span><strong id="tcoCTotal">€—</strong><small id="tcoCHourly">€— per operating hour</small></div></div>
+              <div class="saving-callout"><span>Estimated lifecycle difference</span><strong id="tcoSaving">€—</strong><small id="tcoSavingText">Complete the calculation.</small></div>
+              <div class="cost-bars"><div><span>Purchase & depreciation</span><div class="bar-track"><i id="barYDep"></i></div><div class="bar-track alt"><i id="barCDep"></i></div></div><div><span>Fuel</span><div class="bar-track"><i id="barYFuel"></i></div><div class="bar-track alt"><i id="barCFuel"></i></div></div><div><span>Maintenance</span><div class="bar-track"><i id="barYMaint"></i></div><div class="bar-track alt"><i id="barCMaint"></i></div></div></div>
+              <p class="info-callout">Illustrative calculator. Replace assumptions with locally verified prices, fuel use and maintenance data before customer use.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="view-localization" data-view-name="localization">
+          <div class="page-head"><div><p class="eyebrow">Global consistency, local relevance</p><h2>Localization Hub</h2><p>Adapt approved content without losing the core Yanmar message.</p></div><button class="primary-button" id="newLocalization">New localization</button></div>
+          <div class="localization-layout">
+            <article class="panel">
+              <div class="panel-head"><div><p class="eyebrow">Source content</p><h3>Approved master copy</h3></div><span class="approval-pill">HQ approved</span></div>
+              <label><span>Master language</span><select id="sourceLanguage"><option>English</option></select></label>
+              <textarea id="sourceCopy" rows="15">Reliable professional power where you need it. Yanmar YDG portable diesel generators are designed for demanding applications, combining robust performance with practical portability and trusted service support.</textarea>
+              <div class="locked-notice">Core claims are locked until verified by Yanmar product specialists.</div>
+            </article>
+            <article class="panel">
+              <div class="panel-head"><div><p class="eyebrow">Local adaptation</p><h3>Market version</h3></div><span class="progress-pill">Draft</span></div>
+              <div class="form-grid two-col"><label><span>Target language</span><select id="targetLanguage"><option>Dutch</option><option>German</option><option>French</option><option>Spanish</option><option>Polish</option><option>Arabic</option></select></label><label><span>Market</span><input id="localizationMarket" value="Netherlands" /></label></div>
+              <textarea id="localizedCopy" rows="15" placeholder="Create or paste the localized version here…"></textarea>
+              <div class="button-row end"><button class="secondary-button" id="localizeDraft">Create first draft</button><button class="primary-button" id="submitLocalization">Submit for approval</button></div>
+            </article>
+          </div>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">Localization readiness</p><h3>Pre-publish checks</h3></div></div><div class="localization-check-grid"><div><span>✓</span><strong>Core proposition retained</strong><small>Reliability and professional application remain central.</small></div><div><span>!</span><strong>Technical claims</strong><small>Confirm model-specific details before publication.</small></div><div><span>✓</span><strong>Local relevance</strong><small>Market and audience context added.</small></div><div><span>!</span><strong>Native-language review</strong><small>Assign a local reviewer before approval.</small></div></div></article>
+        </section>
+
+        <section class="view" id="view-report-results" data-view-name="report-results">
+          <div class="page-head"><div><p class="eyebrow">Close the activation loop</p><h2>Report Results</h2><p id="reportPageDescription">Submit campaign performance and commercial feedback to Yanmar.</p></div><button class="primary-button distributor-only" id="newReportButton">New result report</button><button class="primary-button admin-only" id="exportAllReports">Export all results</button></div>
+
+          <div class="distributor-only" id="distributorReports">
+            <div class="report-layout">
+              <form class="panel form-panel" id="reportForm">
+                <div class="panel-head"><div><p class="eyebrow">Campaign result form</p><h3>Report local performance</h3></div><span class="progress-pill">Saves locally</span></div>
+                <div class="form-grid two-col">
+                  <label><span>Campaign</span><input id="reportCampaign" value="YDG Reliable Power Campaign" required /></label>
+                  <label><span>Market</span><input id="reportMarket" value="Netherlands" required /></label>
+                  <label><span>Product line</span><select id="reportProduct"><option>YDG</option><option>YDP</option><option>L-Series</option></select></label>
+                  <label><span>Primary channel</span><select id="reportChannel"><option>LinkedIn</option><option>Website</option><option>Email</option><option>Google Search</option><option>Event</option><option>Dealer activation</option></select></label>
+                  <label><span>Start date</span><input id="reportStart" type="date" value="2026-07-01" /></label>
+                  <label><span>End date</span><input id="reportEnd" type="date" value="2026-07-25" /></label>
+                  <label><span>Reach / impressions</span><input id="reportReach" type="number" value="12500" /></label>
+                  <label><span>Clicks / interactions</span><input id="reportClicks" type="number" value="640" /></label>
+                  <label><span>Qualified leads</span><input id="reportLeads" type="number" value="18" /></label>
+                  <label><span>Sales opportunities</span><input id="reportOpportunities" type="number" value="4" /></label>
+                </div>
+                <label><span>What worked?</span><textarea id="reportWorked" rows="4" placeholder="Describe the strongest response or useful market feedback."></textarea></label>
+                <label><span>What should Yanmar improve?</span><textarea id="reportImprove" rows="4" placeholder="Example: more local application visuals or translated technical proof."></textarea></label>
+                <label><span>Evidence or link</span><input id="reportEvidence" placeholder="Campaign URL, screenshot reference or internal file name" /></label>
+                <div class="button-row end"><button type="button" class="secondary-button" id="saveReportDraft">Save draft</button><button type="submit" class="primary-button">Submit report</button></div>
+              </form>
+              <aside class="panel report-guidance">
+                <p class="eyebrow">Why reporting matters</p><h3>Make future support smarter</h3><p>Results help Yanmar identify effective messages, local barriers and content gaps across markets.</p>
+                <div class="guidance-list"><div><span>01</span><p><strong>Add context</strong><small>Numbers become useful when the market situation is explained.</small></p></div><div><span>02</span><p><strong>Report learning</strong><small>Negative or mixed outcomes are valuable input too.</small></p></div><div><span>03</span><p><strong>Connect to sales</strong><small>Include lead quality and distributor feedback where possible.</small></p></div></div>
+              </aside>
+            </div>
+            <article class="panel"><div class="panel-head"><div><p class="eyebrow">Your submissions</p><h3>Recent result reports</h3></div></div><div class="table-scroll"><table class="data-table"><thead><tr><th>Campaign</th><th>Market</th><th>Channel</th><th>Reach</th><th>Leads</th><th>Status</th><th></th></tr></thead><tbody id="distributorReportRows"></tbody></table></div></article>
+          </div>
+
+          <div class="admin-only" id="adminReports">
+            <div class="metric-grid"><article class="metric-card"><span class="metric-label">Submitted reports</span><strong id="adminReportCount">0</strong><small>Across all markets</small></article><article class="metric-card"><span class="metric-label">Total reported reach</span><strong id="adminReach">0</strong><small>Self-reported by distributors</small></article><article class="metric-card"><span class="metric-label">Qualified leads</span><strong id="adminLeads">0</strong><small>Reported campaign leads</small></article><article class="metric-card"><span class="metric-label">Average interaction rate</span><strong id="adminInteractionRate">0%</strong><small>Clicks ÷ reach</small></article></div>
+            <div class="dashboard-grid"><article class="panel span-7"><div class="panel-head"><div><p class="eyebrow">Market reporting overview</p><h3>Results by market</h3></div><select id="adminReportFilter" class="compact-select"><option value="all">All products</option><option>YDG</option><option>YDP</option><option>L-Series</option></select></div><div class="market-bars" id="marketBars"></div></article><article class="panel span-5"><div class="panel-head"><div><p class="eyebrow">Common learning</p><h3>Distributor feedback themes</h3></div></div><div class="theme-list" id="feedbackThemes"></div></article></div>
+            <article class="panel"><div class="panel-head"><div><p class="eyebrow">All submissions</p><h3>Campaign result database</h3></div><input id="adminReportSearch" class="table-search" placeholder="Search campaign or market…" /></div><div class="table-scroll"><table class="data-table"><thead><tr><th>Campaign</th><th>Market</th><th>Product</th><th>Channel</th><th>Reach</th><th>Leads</th><th>Interaction</th><th>Date</th></tr></thead><tbody id="adminReportRows"></tbody></table></div></article>
+          </div>
+        </section>
+
+        <section class="view" id="view-support" data-view-name="support">
+          <div class="page-head"><div><p class="eyebrow">Connected support workflow</p><h2>Support Requests</h2><p>Request local content, product clarification or campaign assistance.</p></div><button class="primary-button" id="newSupportRequest">New request</button></div>
+          <div class="support-grid"><article class="panel support-form-card" id="supportFormCard"><form id="supportForm"><div class="panel-head"><div><p class="eyebrow">New support brief</p><h3>What do you need?</h3></div><button type="button" class="icon-button" id="closeSupportForm">×</button></div><div class="form-grid two-col"><label><span>Request type</span><select id="supportType"><option>Local content adaptation</option><option>New campaign asset</option><option>Technical clarification</option><option>Translation support</option><option>Comparison data</option><option>Event support</option></select></label><label><span>Priority</span><select id="supportPriority"><option>Normal</option><option>High</option><option>Critical deadline</option></select></label><label><span>Product</span><select id="supportProduct"><option>YDG</option><option>YDP</option><option>L-Series</option><option>Multiple products</option></select></label><label><span>Needed by</span><input id="supportDeadline" type="date" /></label></div><label><span>Request title</span><input id="supportTitle" placeholder="Example: Polish YDG rental campaign adaptation" required /></label><label><span>Background and desired outcome</span><textarea id="supportDescription" rows="6" placeholder="Explain the audience, channel, market, existing material and what a successful result looks like." required></textarea></label><label><span>Reference link or file name</span><input id="supportReference" placeholder="Optional" /></label><button class="primary-button full-width" type="submit">Send request</button></form></article><article class="panel"><div class="panel-head"><div><p class="eyebrow">Request tracker</p><h3>Current support workflow</h3></div><select id="supportFilter" class="compact-select"><option value="all">All statuses</option><option>Waiting for asset</option><option>In progress</option><option>Planned</option><option>Postponed</option><option>Completed</option></select></div><div class="request-list" id="supportRequestList"></div></article></div>
+        </section>
+
+
+        <section class="view pp-view" id="view-impact-dashboard" data-view-name="impact-dashboard">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Measure activation</p><h2>Impact Dashboard</h2><p>Connect portal usage, distributor action and reported local-market results.</p></div><div class="pp-page-actions"><select class="compact-select"><option>Last 6 months</option><option>Last 12 months</option></select><button class="secondary-button" id="ppExportImpact">Export snapshot</button></div></div>
+          <div class="pp-insight-banner"><span>✦</span><div><strong>Amplify insight</strong><p>Markets using three or more portal tools report more consistent promotional activity. Poland currently combines the strongest content adoption and result reporting.</p></div><button data-open-view="market-playbooks">Open playbook →</button></div>
+          <div class="pp-kpi-grid">
+            <article><small>Active distributors</small><strong>8<span>/12</span></strong><em>↑ 2 this period</em></article>
+            <article><small>Activation actions</small><strong>47</strong><em>↑ 18%</em></article>
+            <article><small>Reported leads</small><strong>126</strong><em>↑ 24%</em></article>
+            <article><small>Content usefulness</small><strong>84%</strong><em>Target ≥ 60%</em></article>
+          </div>
+          <div class="pp-analytics-grid">
+            <article class="panel pp-chart-panel"><div class="panel-head"><div><p class="eyebrow">Adoption trend</p><h3>Tool usage by month</h3></div><span class="source-chip">LIVE DEMO</span></div><div class="pp-stacked-chart"><div style="--a:34%;--b:15%"><span>FEB</span></div><div style="--a:43%;--b:21%"><span>MAR</span></div><div style="--a:52%;--b:28%"><span>APR</span></div><div style="--a:62%;--b:34%"><span>MAY</span></div><div style="--a:74%;--b:40%"><span>JUN</span></div><div style="--a:88%;--b:49%"><span>JUL</span></div></div><div class="pp-chart-key"><span><i class="red"></i>Content & campaigns</span><span><i></i>Tools & reporting</span></div></article>
+            <article class="panel"><div class="panel-head"><div><p class="eyebrow">Feature adoption</p><h3>Most-used tools</h3></div></div><div class="pp-rank-bars"><div><p><span>01</span>Content Studio AI</p><b>86%</b><i><em style="width:86%"></em></i></div><div><p><span>02</span>Asset Library</p><b>74%</b><i><em style="width:74%"></em></i></div><div><p><span>03</span>Campaign Builder</p><b>62%</b><i><em style="width:62%"></em></i></div><div><p><span>04</span>TCO Calculator</p><b>48%</b><i><em style="width:48%"></em></i></div><div><p><span>05</span>Report Results</p><b>37%</b><i><em style="width:37%"></em></i></div></div></article>
+          </div>
+          <article class="panel pp-table-panel"><div class="panel-head"><div><p class="eyebrow">Market scorecard</p><h3>Distributor activation overview</h3></div><input class="table-search" id="ppImpactSearch" placeholder="Search market…" /></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Market</th><th>Activation</th><th>Campaigns</th><th>Downloads</th><th>Reports</th><th>Trend</th><th>Status</th></tr></thead><tbody id="ppImpactTable"></tbody></table></div></article>
+        </section>
+
+        <section class="view pp-view" id="view-product-hub" data-view-name="product-hub">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Product intelligence</p><h2>Product Hub</h2><p>Approved product stories, application examples, proof points and activation shortcuts.</p></div><button class="secondary-button" id="ppDownloadProductBrief">Download product brief</button></div>
+          <div class="pp-product-tabs"><button class="is-active" data-pp-product="YDG"><b>G</b><span><strong>YDG</strong><small>Portable diesel generators</small></span></button><button data-pp-product="YDP"><b>P</b><span><strong>YDP</strong><small>Portable diesel pumps</small></span></button><button data-pp-product="L-Series"><b>L</b><span><strong>L-Series</strong><small>Industrial diesel engines</small></span></button></div>
+          <div id="ppProductStage"></div>
+        </section>
+
+        <section class="view pp-view" id="view-seo-sea-lab" data-view-name="seo-sea-lab">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Search visibility</p><h2>SEO & SEA Lab</h2><p>Evaluate page fundamentals, build metadata and create responsive search-ad assets.</p></div><span class="source-chip">Transparent guideline-based score</span></div>
+          <div class="pp-lab-tabs"><button class="is-active" data-pp-lab="seo">SEO Content Score</button><button data-pp-lab="sea">SEA Ad Builder</button><button data-pp-lab="meta">Metadata Generator</button></div>
+          <div class="pp-lab-panel is-active" data-pp-lab-panel="seo">
+            <div class="pp-seo-layout"><article class="panel"><div class="form-grid two-col"><label><span>Primary keyword</span><input id="ppSeoKeyword" value="portable diesel generator" /></label><label><span>Search intent</span><select><option>Commercial</option><option>Informational</option><option>Transactional</option></select></label><label class="full-row"><span>Page title</span><input id="ppSeoTitle" value="YDG Portable Diesel Generators | Yanmar Europe" /></label><label class="full-row"><span>Meta description</span><textarea id="ppSeoDescription" rows="3">Discover Yanmar YDG portable diesel generators for reliable professional power, efficient operation and demanding work environments.</textarea></label><label class="full-row"><span>Page copy</span><textarea id="ppSeoContent" rows="9">Yanmar YDG portable diesel generators deliver dependable professional power for construction, rental and demanding field applications. The compact diesel design combines practical portability with efficient operation and Yanmar support. Explore the range, compare specifications and contact your local distributor for availability.</textarea></label></div><button class="primary-button" id="ppAnalyzeSeo">Analyze search readiness</button></article>
+            <aside class="panel pp-score-panel"><div class="pp-score-ring" id="ppSeoRing" style="--score:78"><strong id="ppSeoScore">78</strong><span>/100</span><small>SEO readiness</small></div><div class="pp-score-label"><strong id="ppSeoLabel">Strong foundation</strong><p>This is a heuristic readiness score, not an official Google score or ranking prediction.</p></div><div id="ppSeoChecks" class="pp-seo-checks"></div></aside></div>
+          </div>
+          <div class="pp-lab-panel" data-pp-lab-panel="sea">
+            <div class="pp-sea-layout"><article class="panel"><div class="form-grid two-col"><label><span>Product</span><select id="ppSeaProduct"><option>YDG</option><option>YDP</option><option>L-Series</option></select></label><label><span>Market</span><select id="ppSeaMarket"><option>Netherlands</option><option>Poland</option><option>Spain</option><option>UAE</option></select></label><label class="full-row"><span>Primary value</span><input id="ppSeaValue" value="Reliable professional diesel power" /></label></div><button class="primary-button" id="ppGenerateSea">Generate responsive search-ad assets</button><div id="ppSeaAssets" class="pp-ad-assets"></div></article><aside class="panel"><p class="eyebrow">Search-ad preview</p><div class="pp-google-preview"><small>Sponsored</small><p>www.yanmar.com › industrial › ydg</p><h3 id="ppSeaPreviewTitle">Yanmar YDG Generators | Reliable Diesel Power</h3><span id="ppSeaPreviewText">Professional portable power built for demanding work. Explore YDG specifications.</span></div><div class="pp-ad-strength"><div><strong>Ad strength</strong><span id="ppAdStrength">Good</span></div><i><em id="ppAdStrengthBar" style="width:72%"></em></i><ul><li>Use distinct headlines</li><li>Include clear customer value</li><li>Add action-oriented descriptions</li></ul></div></aside></div>
+          </div>
+          <div class="pp-lab-panel" data-pp-lab-panel="meta"><div class="pp-meta-layout panel"><div><p class="eyebrow">Metadata builder</p><h3>Create a complete metadata set</h3><p>Turn one page summary into a draft title, description, slug and social preview.</p><label><span>Page summary</span><textarea id="ppMetaBrief" rows="7">YDP portable diesel pumps for professional dewatering, construction and emergency response applications.</textarea></label><button class="primary-button" id="ppGenerateMeta">Generate metadata</button></div><div id="ppMetaOutput" class="pp-meta-output"></div></div></div>
+        </section>
+
+        <section class="view pp-view" id="view-market-playbooks" data-view-name="market-playbooks">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Local activation intelligence</p><h2>Market Playbooks</h2><p>Translate shared brand direction into practical country-level priorities and actions.</p></div><select id="ppMarketRegion" class="compact-select"><option>All regions</option><option>Europe</option><option>Middle East</option><option>Africa</option></select></div>
+          <div class="pp-market-grid" id="ppMarketGrid"></div>
+        </section>
+
+        <section class="view pp-view" id="view-event-kit" data-view-name="event-kit">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Physical activation</p><h2>Event Kit Builder</h2><p>Plan a trade show, dealer day or product demonstration with one coordinated checklist.</p></div><button class="secondary-button" id="ppExportEvent">Export checklist</button></div>
+          <div class="pp-event-layout"><article class="panel"><div class="form-grid two-col"><label><span>Event name</span><input id="ppEventName" value="Regional Construction Demo Day" /></label><label><span>Date</span><input id="ppEventDate" type="date" value="2026-09-18" /></label><label><span>Market</span><select id="ppEventMarket"><option>Netherlands</option><option>Poland</option><option>Spain</option><option>UAE</option></select></label><label><span>Focus product</span><select id="ppEventProduct"><option>YDG</option><option>YDP</option><option>L-Series</option></select></label><label class="full-row"><span>Objective</span><textarea id="ppEventObjective" rows="5">Demonstrate professional reliability and collect qualified rental and construction leads.</textarea></label></div><button class="primary-button" id="ppBuildEvent">Build event kit</button></article><article class="panel"><div class="panel-head"><div><p class="eyebrow">Recommended kit</p><h3>Activation checklist</h3></div><span class="progress-pill" id="ppEventProgress">0 / 8 complete</span></div><div id="ppEventChecklist" class="pp-event-checklist"></div></article></div>
+        </section>
+
+        <section class="view pp-view" id="view-co-marketing" data-view-name="co-marketing">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Shared market investment</p><h2>Co-Marketing Hub</h2><p>Prepare structured local activation proposals and track approval status.</p></div><button class="primary-button" id="ppNewMdfRequest">New co-marketing request</button></div>
+          <div class="pp-kpi-grid pp-three"><article><small>Available demo budget</small><strong>€25K</strong><em>Illustrative annual allocation</em></article><article><small>Approved requests</small><strong>4</strong><em>€12.4K allocated</em></article><article><small>Open requests</small><strong id="ppMdfOpenCount">2</strong><em>Awaiting review</em></article></div>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">Request tracker</p><h3>Local activation proposals</h3></div></div><div id="ppMdfList" class="pp-request-tracker"></div></article>
+        </section>
+
+        <section class="view pp-view" id="view-academy" data-view-name="academy">
+          <div class="pp-academy-hero"><div><p class="eyebrow">Learn. Apply. Activate.</p><h2>Distributor Academy</h2><p>Short practical learning paths that make product communication and value selling easier.</p><div class="pp-academy-progress"><div><strong id="ppAcademyPercent">38%</strong><span>Learning progress</span></div><i><em id="ppAcademyBar" style="width:38%"></em></i><small>Complete the core modules to earn Amplify certification.</small></div></div><div class="pp-certificate"><b>✦</b><strong>AMPLIFY<br>CERTIFIED</strong><small>Distributor activation</small></div></div>
+          <div id="ppCourseGrid" class="pp-course-grid"></div>
+        </section>
+
+        <section class="view pp-view" id="view-approval-center" data-view-name="approval-center">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Brand governance</p><h2>Approval Centre</h2><p>Review localized content, campaign assets and distributor submissions.</p></div><select class="compact-select"><option>All submissions</option><option>Content</option><option>Localization</option><option>Campaign</option></select></div>
+          <div class="pp-approval-layout"><aside class="panel" id="ppApprovalList"></aside><article class="panel" id="ppApprovalDetail"><div class="pp-empty-state"><span>✓</span><h3>Select a submission</h3><p>Review content, comments and approval history.</p></div></article></div>
+        </section>
+
+        <section class="view pp-view" id="view-user-access" data-view-name="user-access">
+          <div class="page-head pp-page-head"><div><p class="eyebrow">Workspace management</p><h2>User Access</h2><p>Manage distributor access, market roles and workspace status.</p></div><button class="primary-button" id="ppInviteUser">Invite user</button></div>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">Network users</p><h3>Distributor and admin access</h3></div><input class="table-search" id="ppUserSearch" placeholder="Search users…" /></div><div class="table-wrap"><table class="data-table"><thead><tr><th>User</th><th>Market</th><th>Role</th><th>Last active</th><th>Status</th><th></th></tr></thead><tbody id="ppUserTable"></tbody></table></div></article>
+        </section>
+
+        <section class="view" id="view-admin-console" data-view-name="admin-console">
+          <div class="page-head"><div><p class="eyebrow">Yanmar HQ control centre</p><h2>Admin Console</h2><p>Manage content, approvals, adoption and distributor support.</p></div><button class="primary-button" id="adminUploadButton">Add approved asset</button></div>
+          <div class="metric-grid"><article class="metric-card"><span class="metric-label">Active distributors</span><strong>18</strong><small class="positive">↑ 3 this quarter</small></article><article class="metric-card"><span class="metric-label">Pending approvals</span><strong id="pendingApprovals">4</strong><small>2 content · 2 localization</small></article><article class="metric-card"><span class="metric-label">Content adoption</span><strong>64%</strong><small>Used by at least one market</small></article><article class="metric-card"><span class="metric-label">Support SLA</span><strong>1.4d</strong><small>Average first response</small></article></div>
+          <div class="dashboard-grid"><article class="panel span-7"><div class="panel-head"><div><p class="eyebrow">Approval queue</p><h3>Items needing review</h3></div><button class="text-button" id="approveAll">Approve low-risk items</button></div><div class="approval-list" id="approvalList"></div></article><article class="panel span-5"><div class="panel-head"><div><p class="eyebrow">Network activation</p><h3>Distributor adoption</h3></div></div><div class="adoption-list"><div><span>Saudi Arabia</span><div><i style="width:92%"></i></div><strong>92%</strong></div><div><span>Poland</span><div><i style="width:81%"></i></div><strong>81%</strong></div><div><span>UAE</span><div><i style="width:76%"></i></div><strong>76%</strong></div><div><span>Spain</span><div><i style="width:58%"></i></div><strong>58%</strong></div><div><span>Netherlands</span><div><i style="width:44%"></i></div><strong>44%</strong></div></div></article></div>
+          <div class="dashboard-grid"><article class="panel span-6"><div class="panel-head"><div><p class="eyebrow">Content gap signals</p><h3>Most requested support</h3></div></div><div class="gap-grid"><div><strong>01</strong><span>Local application visuals</span><small>7 markets</small></div><div><strong>02</strong><span>Price justification</span><small>6 markets</small></div><div><strong>03</strong><span>Website copy</span><small>5 markets</small></div><div><strong>04</strong><span>Competitor comparisons</span><small>4 markets</small></div></div></article><article class="panel span-6"><div class="panel-head"><div><p class="eyebrow">Portal governance</p><h3>Workspace controls</h3></div></div><div class="settings-list"><label><span><strong>Require HQ approval</strong><small>For localized technical claims</small></span><input type="checkbox" checked /></label><label><span><strong>Distributor result reminders</strong><small>After campaign end date</small></span><input type="checkbox" checked /></label><label><span><strong>Enable AI draft tools</strong><small>Human review remains mandatory</small></span><input type="checkbox" checked /></label><label><span><strong>Show experimental features</strong><small>Comparison and SEO prototypes</small></span><input type="checkbox" checked /></label></div></article></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="panel-head"><div><p class="eyebrow" id="modalEyebrow">Amplify++</p><h3 id="modalTitle">Dialog</h3></div><button class="icon-button" id="closeModal" aria-label="Close">×</button></div>
+      <div id="modalBody"></div>
+      <div class="button-row end" id="modalActions"></div>
+    </div>
+  </div>
+
+  <div class="notification-panel" id="notificationPanel" hidden>
+    <div class="panel-head"><div><p class="eyebrow">Notifications</p><h3>Workspace updates</h3></div><button class="icon-button" id="closeNotifications">×</button></div>
+    <div class="notification-list"><button><span class="notification-type red">!</span><p><strong>Result report due</strong><small>YDG Reliable Power Campaign · Today</small></p></button><button><span class="notification-type blue">✓</span><p><strong>Localization approved</strong><small>German YDP flood response copy</small></p></button><button><span class="notification-type orange">↗</span><p><strong>New asset available</strong><small>YDG rental comparison sheet</small></p></button></div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
